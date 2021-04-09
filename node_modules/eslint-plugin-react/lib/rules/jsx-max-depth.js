@@ -6,7 +6,6 @@
 'use strict';
 
 const has = require('has');
-const includes = require('array-includes');
 const variableUtil = require('../util/variable');
 const jsxUtil = require('../util/jsx');
 const docsUrl = require('../util/docsUrl');
@@ -84,8 +83,8 @@ module.exports = {
       });
     }
 
-    function findJSXElementOrFragment(variables, name, previousReferences) {
-      function find(refs, prevRefs) {
+    function findJSXElementOrFragment(variables, name) {
+      function find(refs) {
         let i = refs.length;
 
         while (--i >= 0) {
@@ -95,7 +94,7 @@ module.exports = {
             return (jsxUtil.isJSX(writeExpr)
               && writeExpr)
               || ((writeExpr && writeExpr.type === 'Identifier')
-              && findJSXElementOrFragment(variables, writeExpr.name, prevRefs));
+              && findJSXElementOrFragment(variables, writeExpr.name));
           }
         }
 
@@ -103,18 +102,7 @@ module.exports = {
       }
 
       const variable = variableUtil.getVariable(variables, name);
-      if (variable && variable.references) {
-        const containDuplicates = previousReferences.some((ref) => includes(variable.references, ref));
-
-        // Prevent getting stuck in circular references
-        if (containDuplicates) {
-          return false;
-        }
-
-        return find(variable.references, previousReferences.concat(variable.references));
-      }
-
-      return false;
+      return variable && variable.references && find(variable.references);
     }
 
     function checkDescendant(baseDepth, children) {
@@ -153,7 +141,7 @@ module.exports = {
         }
 
         const variables = variableUtil.variablesInScope(context);
-        const element = findJSXElementOrFragment(variables, node.expression.name, []);
+        const element = findJSXElementOrFragment(variables, node.expression.name);
 
         if (element) {
           const baseDepth = getDepth(node);
