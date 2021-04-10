@@ -70,3 +70,4 @@ const RightSide = props => {
 };
 
 export default App;
+
