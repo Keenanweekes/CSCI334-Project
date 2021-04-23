@@ -4,12 +4,12 @@
   margin: auto;
 }
 
-.login-main{
+.register-main{
   background-color: #0D3155;
   height:100vh;
 }
 
-.login-header{
+.register-header{
   color: #F1F6F6;
   text-align: center;
   margin:auto;
@@ -24,7 +24,7 @@
   
 }
 
-.login-box{
+.register-box{
   margin:auto;
   height: 490px;
   width: 540px;
@@ -37,8 +37,8 @@
   top: 70px;
 }
 
-.login-box-header{
-  margin-top: 40px;
+.register-box-header{
+  margin-top: 30px;
   text-align: center;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: #0D3155;
@@ -74,15 +74,6 @@ input[type=password]{
   font-size: large;
 }
 
-input[type="checkbox"]{
-  width: 20px;
-}
-
-label{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 17px;
-  color: lightslategray;
-}
 
 .show-password{
   margin:auto;
@@ -103,8 +94,12 @@ label{
   margin-bottom: 1px;
 }
 
-.sign-in-button-container{
+.sign-up-button-container{
   margin-bottom: 20px;
+}
+
+.back-button{
+    margin:auto;
 }
 
 button{
@@ -121,7 +116,7 @@ button:hover{
   color: #0D3155;
 }
 
-.login-footer{
+.register-footer{
   margin:auto;
   color: #9acbeb;
   position: relative;
@@ -143,6 +138,7 @@ button:hover{
 .terms-of-use{
   margin-left: 100px;
 }
+
 
 
 

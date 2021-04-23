@@ -1,8 +1,6 @@
 import React, {Component, useState} from "react";
-import loginImg from "../../login.svg";
-import Test from "./test";
 import Login from "./login";
-
+import './register.css';
 
 const Register = () =>{
   const [state, setstate] = useState('register');
@@ -12,6 +10,7 @@ const Register = () =>{
         {state === 'register' && (
           <div className="register-main">
             <h1 className="register-header">COVID RESPONSE</h1>
+            <div className="register-box">
             <h2 className="register-box-header">SIGN UP</h2>
             <div className="form">
               <div className="form-group">
@@ -40,8 +39,13 @@ const Register = () =>{
               </div>
             </div>
             <div className="buttons">
+              <div className="sign-up-button-container">
               <button className="sign-up-button" onClick={() => setstate("Login")}>Sign Up</button>
+              </div>
+              <div className="back-button-container">
               <button className="back-button" onClick={() => setstate("Login")}>Back</button>
+              </div>
+            </div>
             </div>
           <footer className="register-footer">
             <a className="privacy-policy">Privacy Policy</a>
