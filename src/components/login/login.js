@@ -1,10 +1,25 @@
 import React, { Component, useState } from "react";
 import Register from "./register";
 import Header from '../Header';
-import './login.css';
+import '../layout.css';
 
 const Login = () => {
   const [state, setstate] = useState('start');
+
+  /* Testing purposes */
+  function getUserType(username) {
+    var userType = "User";
+
+    if(username === "ct") {
+      userType = "Tracer";
+    } else if(username === "hw") {
+      userType = "Health";
+    } else {
+      return userType;
+    }
+
+    return userType;
+  }
 
   return (
     <div className="base-container" >
@@ -15,7 +30,7 @@ const Login = () => {
           <h2 className="login-box-header">LOG IN</h2>
             <div className="form">
               <div className="form-group">
-                <input type="text" className="log-in-email" name="email" placeholder="Email" />
+                <input type="text" className="log-in-email" name="email" placeholder="Email" id="email" />
               </div>
               <div className="form-group">
                 <input type="password" name="password" placeholder="Password" />
@@ -50,8 +65,8 @@ const Login = () => {
         </div>)}
 
       <div className="state">
-        {state === "Header" && <Header />}
-        {state === "Register" && <Register />}
+          {state === "Header" && <Header userType={getUserType(document.getElementById("email").value)} />}
+          {state === "Register" && <Register />}
       </div>
 
     </div>

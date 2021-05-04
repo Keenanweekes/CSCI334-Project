@@ -7,6 +7,162 @@ CSS Checklist
 
 */
 
+*{margin: 0;}
+
+.base-container{
+  margin: auto;
+}
+
+.login-main{
+  background-color: #0D3155;
+  height:100vh;
+}
+
+.login-header{
+  color: #F1F6F6;
+  text-align: center;
+  margin:auto;
+  height: 200px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight:bold;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  position:relative;
+  top: 100px;
+  font-size: 40px;
+  
+}
+
+.login-box{
+  margin:auto;
+  height: 490px;
+  width: 540px;
+  background-color: #F1F6F6;
+  display: flex;
+  flex-direction: column;
+  padding:10px;
+  border-radius: 20px;
+  position: relative;
+  top: 70px;
+}
+
+.login-box-header{
+  margin-top: 40px;
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #0D3155;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.form{
+  margin:auto;
+}
+
+.form-group{
+  margin-bottom: 15px;
+}
+
+.base-container input[type=text]{
+  width:200px;
+  height:20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: whitesmoke;
+  border: 2px solid lightgrey;
+  color: lightslategray;
+  font-size: large;
+}
+
+.base-container input[type=password]{
+  width:200px;
+  height:20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: whitesmoke;
+  border: 2px solid lightgrey;
+  color: lightslategray;
+  font-size: large;
+}
+
+.base-container input[type="checkbox"]{
+  width: 20px;
+}
+
+input[type=date] {
+  width:200px;
+  height:30px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: whitesmoke;
+  border: 2px solid lightgrey;
+  color: lightslategray;
+  font-size: large;
+}
+
+.base-container label{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 17px;
+  color: lightslategray;
+}
+
+.show-password{
+  margin:auto;
+  margin-top: 15px;
+}
+
+.remember-me{
+  margin:auto;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  height: 5px;
+}
+
+.buttons{
+
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 1px;
+}
+
+.sign-in-button-container{
+  margin-bottom: 20px;
+}
+
+.base-container button {
+  width: 210px;
+  height: 27px;
+  background-color: #0D3155;
+  color: #F1F6F6;
+  transition-duration: 0.4s;
+  border:none;
+}
+
+
+.login-footer{
+  margin:auto;
+  color: #9acbeb;
+  position: relative;
+  top: 170px;
+  width: 500px;
+}
+
+.password-recovery{
+  margin:auto;
+  margin-top: 10px;
+}
+
+
+.privacy-policy{
+  margin-left: 100px;
+}
+
+
+.terms-of-use{
+  margin-left: 100px;
+}
+
+
+
+/*========================================================*/
+
 .container {
     width: 100%;
     position: fixed;
@@ -123,7 +279,7 @@ header h2 {
     color: #0D3155;
 }
 
-input[type=text], select {
+#check-in input[type=text], select {
     width: 50%;
     padding: 7px 15px;
     margin: 7px auto;
@@ -132,7 +288,7 @@ input[type=text], select {
     box-sizing: border-box;
   }
 
-  input[type=date], select {
+  #check-in input[type=date], select {
     width: 50%;
     padding: 7px 15px;
     margin: 10px auto;
@@ -141,7 +297,7 @@ input[type=text], select {
     box-sizing: border-box;
   }
   
-  input[type=submit] {
+  #check-in input[type=submit] {
     width: 50%;
     background-color: #0D3155;
     color: white;
@@ -153,8 +309,9 @@ input[type=text], select {
     margin: 15px auto;
   }
 
-  button {
+  #check-in button {
     width: 50%;
+    height: 40px;
     background-color: #0D3155;
     color: white;
     padding: 10px 15px;
@@ -292,7 +449,13 @@ input[type=text], select {
     margin: 50px auto;
     width: 35%;
     padding: 10px;
+   
   }
+
+  .account-container h2 {
+    color: #0D3155;
+    text-transform: uppercase;
+}
 
   .account-edit {
     text-align: center;
@@ -302,6 +465,56 @@ input[type=text], select {
     border-radius: 10px;
     background-color: #F1F6F6;
   }
+
+  .account-edit h2 {
+    color: #0D3155;
+    text-transform: uppercase;
+}
+
+ .account-container input[type=text], select {
+    width: 50%;
+    padding: 7px 15px;
+    margin: 7px auto;
+    display: block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  .account-container input[type=date], select {
+    width: 50%;
+    padding: 7px 15px;
+    margin: 10px auto;
+    display: block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  .account-container input[type=submit] {
+    width: 50%;
+    background-color: #0D3155;
+    color: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin: 15px auto;
+  }
+
+  .account-container button {
+    width: 50%;
+    height: 40px;
+    background-color: #0D3155;
+    color: white;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin: 15px auto;
+  }
+
+
 
   /* ============================================================== */
 
@@ -341,4 +554,31 @@ input[type=text], select {
     color: #0D3155;
     font-size: 20px;
     font-weight: 400;
+  }
+
+  /* =================================================================== */
+
+  .certification {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #F1F6F6;
+  }
+
+  .certification ul li {
+    text-decoration: none;
+    list-style-type: none;
+  }
+  
+  /* ========================================= */
+
+  .button-container {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
   }

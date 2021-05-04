@@ -11,6 +11,18 @@ const CheckInForm = (props) =>  {
     var month = months[currentDate.getMonth()];
     var year = currentDate.getFullYear();
 
+    /* Fix */
+    function checkOut() {
+        return (
+            <div>
+                <span>Checked out</span>
+                <br></br>
+                <span>{day} {month} {year} {time}</span>
+                <br></br>
+            </div>
+        );
+    }
+
     return (
         <div className="checked-in-container">
             <h3>{props.business}</h3>
@@ -18,7 +30,7 @@ const CheckInForm = (props) =>  {
             <br></br>
             <span>{day} {month} {year} {time}</span>
             <br></br>
-            <button>Check Out</button> 
+            <button onClick={checkOut()}>Check Out</button> 
         </div>
     );
         
