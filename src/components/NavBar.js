@@ -6,6 +6,7 @@ import VaccineNews from './VaccineNews';
 import VaccineRollout from './VaccineRollout';
 import AccountEdit from './AccountEdit';
 import StatisticDisplay from './StatisticDisplay';
+import LogInScreen from './login/login';
 
 const NavBar = () => {
     const [active, setActive] = useState("VaccineNews");

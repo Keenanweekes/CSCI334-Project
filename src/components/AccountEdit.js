@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './layout.css';
+import VaccineCarousal from './VaccineCarousal';
 
 const AccountEdit = () => {
     return (
@@ -38,6 +39,9 @@ const AccountEdit = () => {
             </div>
 
             <h3>Vaccine Certificates</h3>
+            <div className="account-edit">
+                <VaccineCarousal />
+            </div>
         </div>
     );
 }   

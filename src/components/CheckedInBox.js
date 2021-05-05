@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import './layout.css';
 
 const CheckInForm = (props) =>  {
+
+    const [active, setActive] = useState("");
 
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -11,14 +13,35 @@ const CheckInForm = (props) =>  {
     var month = months[currentDate.getMonth()];
     var year = currentDate.getFullYear();
 
+    /* Fix */
+    function checkOut() {
+        return (
+            <div className="checked-in-container">
+                <h3>{props.business}</h3>
+                <span>Checked out</span>
+                <br></br>
+                <span>{day} {month} {year} {time}</span>
+                <br></br>
+            </div>
+        );
+    }
+
     return (
-        <div className="checked-in-container">
-            <h3>{props.business}</h3>
-            <span>Checked in</span>
-            <br></br>
-            <span>{day} {month} {year} {time}</span>
-            <br></br>
-            <button>Check Out</button> 
+
+        <div>
+            <div className="checked-in-container">
+                <h3>{props.business}</h3>
+                <span>Checked in</span>
+                <br></br>
+                <span>{day} {month} {year} {time}</span>
+                <br></br>
+                <button onClick={() => setActive("CheckedOut")}>Check Out</button> 
+            </div>
+
+            <div>
+                    {active === "CheckedOut" && <div className="checked-in-arrow"></div>}
+                    {active === "CheckedOut" && checkOut() }                          
+            </div>    
         </div>
     );
         
