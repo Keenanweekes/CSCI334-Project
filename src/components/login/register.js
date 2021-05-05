@@ -8,6 +8,7 @@ import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
 
+
 var firebaseConfig = {
   apiKey: "AIzaSyDqfKSpPS9v7ExERtD8WpjwEzTRGlUrp-w",
   authDomain: "csci334-project.firebaseapp.com",
@@ -38,10 +39,25 @@ const createRecord = () => {
 if(email == "" || password == "" || firstname == "" || lastname == "" || mobile == "" || dob == "" || address == "")
 {
   alert("Empty field detected")
-  return;
+  return; // need to make this not return to login page
 }
 
 //set the document in the database using the users email as a unique identifier.
+const promise = firebase.auth().createUserWithEmailAndPassword(email, password); // create new auth user
+promise.catch(e=>console.log(e.message));
+
+//real time auth listener to check if user is logged in or not already
+//shows a populated user including the logged in users email address which is used  for updating.
+firebase.auth().onAuthStateChanged(firebaseUser =>{
+  if(firebaseUser)
+  {
+    console.log(firebaseUser);
+  }
+  else{
+    console.log("Not logged in");
+  }
+})
+
 const docRef = firestore.collection("users").doc(email);
   docRef.set({
     email: email,
