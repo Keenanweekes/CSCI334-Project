@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
 import './App.css';
 import Login from './components/login/login'
 
-class App extends Component {
+const App = () => {
 
-    render() {
-      return (
-        <Login />
-      )
-    }
+  return (
+
+    <Login />
+
+  )
 }
 
 export default App;
