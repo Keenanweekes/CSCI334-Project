@@ -3,9 +3,6 @@ import Login from "./login";
 import './register.css';
 import fire from '../../fire';
 
-// import "firebase/firestore";
-
-
 var firestore = fire.firestore();
 
 const Register = () => {
@@ -20,7 +17,6 @@ const Register = () => {
   const [dob, setDob] = useState("");
   const [address, setAddress] = useState("");
 
-
   const handleSignup = () => {
 
     // Check to see if an empty field was detected
@@ -31,45 +27,43 @@ const Register = () => {
 
     // Create user login 
     fire.auth().createUserWithEmailAndPassword(email, password)
+    .then(function() {
+      updateFirestore();
+    })
     .catch((err) => {
       console.log(err.code)
-      console.log(err.message)
       switch(err.code) {
         case "auth/email-already-in-use":
         case "auth/invalid-email":
           setEmailError(err.message)
+          return;
           break;
         case 'auth/weak-password':
           setPasswordError(err.message)
+          return;
           break;
       }
     });
-    console.log(emailError)
-    console.log(passwordError)
-    if (emailError == "" && passwordError == "") {
-      // add document to firestore
-      const docRef = firestore.collection("users").doc(email);
-      docRef.set({
-        email: email,
-        firstname: firstname,
-        lastname: lastname,
-        mobile: mobile,
-        dob: dob,
-        address: address
-      })
-      .then(function () {
-        console.log("Firestore Success");
-      })
-      .catch(function(error) {
-        console.log("Error:", error);
-      });
+  }
 
-      setState("Login");
-
-    } else {
-      alert(emailError +". "+ passwordError)
-      return;
-    }
+  function updateFirestore() {
+    
+    // add document to firestore
+    const docRef = firestore.collection("users").doc(email);
+    docRef.set({
+      email: email,
+      firstname: firstname,
+      lastname: lastname,
+      mobile: mobile,
+      dob: dob,
+      address: address
+    })
+    .then(function () {
+      console.log("Firestore Success");
+    })
+    .catch(function(error) {
+      console.log("Error:", error);
+    });
   }
 
   return (
@@ -86,6 +80,7 @@ const Register = () => {
               </div>
               <div className="form-group">
                 <input type="password" id = "password" placeholder = "Password" onChange={(e) => setPassword(e.target.value)} />
+                <p>{passwordError}</p>
               </div>
               <div className="form-group">
                 <input type="text" id = "firstname" placeholder = "First Name" onChange={(e) => setFirstname(e.target.value)} />
@@ -124,6 +119,6 @@ const Register = () => {
 
     </div> 
   );
-  }
+}
 
-  export default Register;
+export default Register;
