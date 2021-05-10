@@ -286,7 +286,7 @@ header h2 {
 
 #check-in input[type=text], select {
     width: 50%;
-    padding: 7px 15px;
+    padding: 15px 15px;
     margin: 7px auto;
     display: block;
     border: 1px solid #ccc;
@@ -488,7 +488,7 @@ header h2 {
 
  .account-container input[type=text], select {
     width: 50%;
-    padding: 7px 15px;
+    padding: 15px 15px;
     margin: 7px auto;
     display: block;
     border: 1px solid #ccc;
