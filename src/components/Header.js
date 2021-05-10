@@ -12,7 +12,7 @@ const Header = (props) => {
             <header>
                 <div>
                     <TopBanner />
-                    <NavBar />
+                    <NavBar userName= {props.email}/>
                 </div>
             </header>
         );

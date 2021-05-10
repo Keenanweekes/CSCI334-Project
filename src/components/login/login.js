@@ -103,7 +103,7 @@ const Login = () => {
       </div>
       )}
       <div className="state">
-        {state === "Header" && <Header userType={userType} />}
+        {state === "Header" && <Header userType={userType} email={email} />}
         {state === "Register" && <Register />}
       </div>
     </div>

@@ -8,7 +8,7 @@ import AccountEdit from './AccountEdit';
 import StatisticDisplay from './StatisticDisplay';
 import LogInScreen from './login/login';
 
-const NavBar = () => {
+const NavBar = (props) => {
     const [active, setActive] = useState("VaccineNews");
 
     return(
@@ -24,7 +24,7 @@ const NavBar = () => {
                             <li><a href="#" onClick={() => setActive("CheckInForm")}>Check in</a></li>
                             <li><a href="#" onClick={() => setActive("CovidStats")}>Covid-19 Stats</a></li>
                             <li><a href="#" onClick={() => setActive("Messages")}>Messages</a></li>
-                            <li className="right"><a href="#" onClick={() => setActive("Account")}>MY ACCOUNT</a></li>
+                            <li className="right"><a href="#" onClick={() => setActive("Account")}>{props.userName}</a></li>
                         </ul>
 
                 </nav>
