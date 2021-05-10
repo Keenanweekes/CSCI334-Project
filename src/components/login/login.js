@@ -24,10 +24,10 @@ const Login = () => {
         case "auth/invalid-email":
         case "auth/user-disabled":
         case "auth/user-not-found":
-          setEmailError(err.message)
+          setEmailError("Incorrect Email")
           break;
         case "auth/wrong-password":
-          setPasswordError(err.message);
+          setPasswordError("Incorrect Password");
           break;
       }
     });

@@ -159,6 +159,10 @@ input[type=date] {
   margin-left: 100px;
 }
 
+.form-group p{
+  color: red;
+}
+
 
 
 /*========================================================*/
