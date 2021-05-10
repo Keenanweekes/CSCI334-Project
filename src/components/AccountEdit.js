@@ -39,7 +39,9 @@ const AccountEdit = () => {
             </div>
 
             <h3>Vaccine Certificates</h3>
-            <VaccineCarousal />
+            <div className="account-edit">
+                <VaccineCarousal />
+            </div>
         </div>
     );
 }   

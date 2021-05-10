@@ -267,6 +267,7 @@ header h2 {
     text-align: center;
     justify-content: center;
     padding: 15px;
+    border: 1px solid #0D3155
 }
 
 #check-in .check-in-box h2 {
@@ -331,6 +332,7 @@ header h2 {
     justify-content: center;
     padding: 15px;
     text-align: center;
+    border: 1px solid #0D3155;
   }
 
   .checked-in-container h3 {
@@ -457,6 +459,14 @@ header h2 {
     text-transform: uppercase;
 }
 
+
+.account-container h3{
+  color: #0D3155;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+
   .account-edit {
     text-align: center;
     margin: auto;
@@ -464,6 +474,7 @@ header h2 {
     padding: 20px;
     border-radius: 10px;
     background-color: #F1F6F6;
+    border: 1px solid #0D3155;
   }
 
   .account-edit h2 {
