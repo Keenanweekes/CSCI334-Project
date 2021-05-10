@@ -267,7 +267,7 @@ header h2 {
     text-align: center;
     justify-content: center;
     padding: 15px;
-    border: 1px solid #0D3155;
+    border: 1px solid #0D3155
 }
 
 #check-in .check-in-box h2 {
@@ -459,7 +459,7 @@ header h2 {
     text-transform: uppercase;
 }
 
-.account-container h3 {
+.account-container h3{
   color: #0D3155;
   text-transform: uppercase;
   margin-top: 20px;

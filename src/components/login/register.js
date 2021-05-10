@@ -1,10 +1,71 @@
-import React, {Component, useState} from "react";
+import React, {useState} from "react";
 import Login from "./login";
 import './register.css';
+import fire from '../../fire';
 
-const Register = () =>{
-  const [state, setstate] = useState('register');
-  
+var firestore = fire.firestore();
+
+const Register = () => {
+  const [state, setState] = useState("register");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [dob, setDob] = useState("");
+  const [address, setAddress] = useState("");
+
+  const handleSignup = () => {
+
+    // Check to see if an empty field was detected
+    if (email == "" || password == "" || firstname == "" || lastname == "" || mobile == "" || dob == "" || address == "") {
+      alert("Empty field detected")
+      return;
+    } 
+
+    // Create user login 
+    fire.auth().createUserWithEmailAndPassword(email, password)
+    .then(function() {
+      updateFirestore();
+    })
+    .catch((err) => {
+      console.log(err.code)
+      switch(err.code) {
+        case "auth/email-already-in-use":
+        case "auth/invalid-email":
+          setEmailError(err.message)
+          return;
+          break;
+        case 'auth/weak-password':
+          setPasswordError(err.message)
+          return;
+          break;
+      }
+    });
+  }
+
+  function updateFirestore() {
+    
+    // add document to firestore
+    const docRef = firestore.collection("users").doc(email);
+    docRef.set({
+      email: email,
+      firstname: firstname,
+      lastname: lastname,
+      mobile: mobile,
+      dob: dob,
+      address: address
+    })
+    .then(function () {
+      console.log("Firestore Success");
+    })
+    .catch(function(error) {
+      console.log("Error:", error);
+    });
+  }
+
   return (
     <div className="register-base-container">
         {state === 'register' && (
@@ -14,36 +75,35 @@ const Register = () =>{
             <h2 className="register-box-header">SIGN UP</h2>
             <div className="form">
               <div className="form-group">
-                <input type="text" name="email" placeholder="Email"></input>
+                <input type="text" id = "email" placeholder = "Email" onChange={(e) => setEmail(e.target.value)} />
+                <p>{emailError}</p>
               </div>
               <div className="form-group">
-                <input type="text" name="username" placeholder="Username"></input>
+                <input type="password" id = "password" placeholder = "Password" onChange={(e) => setPassword(e.target.value)} />
+                <p>{passwordError}</p>
               </div>
               <div className="form-group">
-                <input type="password" name="password" placeholder="Password"></input>
+                <input type="text" id = "firstname" placeholder = "First Name" onChange={(e) => setFirstname(e.target.value)} />
               </div>
               <div className="form-group">
-                <input type="text" name="first-name" placeholder="First Name"></input>
+                <input type="text" id = "lastname" placeholder = "Last Name" onChange={(e) => setLastname(e.target.value)} />
               </div>
               <div className="form-group">
-                <input type="text" name="last-name" placeholder="Last Name"></input>
+                <input type="text" id = "mobile" placeholder = "Mobile Number" onChange={(e) => setMobile(e.target.value)} />
               </div>
               <div className="form-group">
-                <input type="text" name="mobile" placeholder="Mobile Number"></input>
+                <input type="text" id ="dob" placeholder = "Date of Birth" onChange={(e) => setDob(e.target.value)} />
               </div>
               <div className="form-group">
-                <input type="text" name="dob" placeholder="Date of Birth"></input>
-              </div>
-              <div className="form-group">
-                <input type="text" name="address" placeholder="Address"></input>
+                <input type="text" id = "address" placeholder = "Address" onChange={(e) => setAddress(e.target.value)} />
               </div>
             </div>
             <div className="buttons">
               <div className="sign-up-button-container">
-              <button className="sign-up-button" onClick={() => setstate("Login")}>Sign Up</button>
+              <button className="sign-up-button" onClick={handleSignup}>Sign Up</button>
               </div>
               <div className="back-button-container">
-              <button className="back-button" onClick={() => setstate("Login")}>Back</button>
+              <button className="back-button" onClick={() => setState("Login")}>Back</button>
               </div>
             </div>
             </div>
@@ -53,14 +113,12 @@ const Register = () =>{
           </footer>
 
         </div>)}
-
-        <div>
+        <div > 
           {state === "Login" && <Login />}
         </div>
 
-    </div>
-
+    </div> 
   );
-  }
+}
 
-  export default Register;
+export default Register;
