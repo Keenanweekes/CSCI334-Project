@@ -7,6 +7,7 @@ import VaccineRollout from './VaccineRollout';
 import AccountEdit from './AccountEdit';
 import StatisticDisplay from './StatisticDisplay';
 import LogInScreen from './login/login';
+import Messages from './Messages';
 
 const NavBar = (props) => {
     const [active, setActive] = useState("VaccineNews");
@@ -35,7 +36,7 @@ const NavBar = (props) => {
                 {active === "VaccineNews" && <VaccineNews />}
                 {active === "VaccineRollout" && <VaccineRollout />}
                 {active === "CovidStats" && <StatisticDisplay />}
-                {active === "Messages" && <div><h1>Messages</h1></div>}
+                {active === "Messages" && <Messages currentUser={props.userName}/>}
                 {active === "Account" && <AccountEdit />}
             </div>
         </div>
