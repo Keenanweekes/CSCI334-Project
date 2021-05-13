@@ -13,8 +13,8 @@ export default class extends React.Component {
         totalSlides={2}
       >
         <Slider>
-          <Slide index={0}><Certification text="Dosage 1" /></Slide>
-          <Slide index={1}><Certification text="Dosage 2" /></Slide>
+          <Slide index={0}><Certification /></Slide>
+          <Slide index={1}><Certification /></Slide>
         </Slider>
         <ButtonBack>Back</ButtonBack>
         <ButtonNext>Next</ButtonNext>

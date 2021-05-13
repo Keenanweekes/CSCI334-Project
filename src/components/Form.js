@@ -27,7 +27,11 @@ const checkInDb = () =>
 const Form = (props) => {
     var d = new Date().toLocaleTimeString();
 
-    const clickCheckIn = () => setActive("CheckedIn");
+    const clickCheckIn = () => {
+        if(document.getElementById("business").value != "") {
+            setActive("CheckedIn");
+        }
+    }
 
     const [active, setActive] = useState("");
 

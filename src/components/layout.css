@@ -593,3 +593,33 @@ header h2 {
     padding: 20px;
     border-radius: 10px;
   }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+  }
+
+  .grid > span {
+    padding: 8px 4px;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+
+  .left {
+    float: left;
+  }
+
+  .inner-container {
+    width: 50%;
+    margin: auto;
+  }
+
+  .inner-container > div{
+    width: 50%;
+    text-align: left;
+    text-transform: uppercase;
+    color: #0D3155;
+    padding: 10px 10px;
+  }

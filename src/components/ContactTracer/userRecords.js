@@ -1,6 +1,6 @@
 export const userRecords = [
     {
-        "username":"ryan_castles",
+        "username":"ryan@mail.com",
         "positive":true,
         "locations": [
             {
@@ -18,7 +18,7 @@ export const userRecords = [
         ]
     },
     {
-        "username":"jason_martin",
+        "username":"jason@mail.com",
         "positive":true,
         "locations": [
             {
@@ -36,8 +36,8 @@ export const userRecords = [
         ]
     },
     {
-        "username":"albert_iannelli",
-        "positive":true,
+        "username":"albert@mail.com",
+        "positive":false,
         "locations": [
             {
                 "businessName":"Da Orlando",
@@ -54,8 +54,8 @@ export const userRecords = [
         ]
     },
     {
-        "username":"keenan_weekes",
-        "positive":true,
+        "username":"keenan@mail.com",
+        "positive":false,
         "locations": [
             {
                 "businessName":"McDonalds",
