@@ -5,9 +5,17 @@ import fire from '../fire';
 const Message = (props) => {
 
     return(
-        <div className="message-box">
+        <div className="message-wrap">
 
-            <p>{props.messageText}</p>
+            {props.messageText.map((data, key) => {
+                return(
+                    <div className="message-box">
+                    <div key={key}>
+                        <p>{data}</p>
+                    </div>
+                    </div>
+                )
+            })}
 
         </div>
 

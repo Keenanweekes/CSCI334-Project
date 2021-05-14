@@ -600,27 +600,35 @@ header h2 {
 
   /* ========================================= */
 
-  .message-container{
-    margin: 50px auto;
-    background-color:#F1F6F6;
-    width: 100vh;
-    height: 100vh;
-    border-radius: 10px;
-    border: 1px solid #0D3155;
-    color: #0D3155;
-  }
+  
 
   .message-container p {
     padding: 5px;
   }
 
   .message-box{
-    margin: 50px auto;
-    background-color:#9acbeb;
-    width: 400px;
-    height: 200px;
-    border-radius: 10px;
-    border: 1px solid #0D3155;
     text-align: center;
+    margin: 20px auto;
+    width: 35%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #F1F6F6;
+    border: 1px solid #0D3155;
+    font-size: large;
 
   }
+
+  /*=======================================*/
+
+  .sent-box{
+    text-align: center;
+    margin: 20px auto;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #F1F6F6;
+    border: 1px solid #0D3155;
+    font-size: large;
+  }
+
+  
