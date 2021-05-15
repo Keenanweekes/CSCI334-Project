@@ -4,10 +4,19 @@ import fire from '../fire';
 
 const Message = (props) => {
 
+    function checkIfEmpty(){
+        var emptyCheck = [];
+        if(props.messageText != ""){
+            emptyCheck = props.messageText;
+        }
+
+        return emptyCheck;
+    }
+
     return(
         <div className="message-wrap">
-
-            {props.messageText.map((data, key) => {
+            
+            {checkIfEmpty().map((data, key) => {
                 return(
                     <div className="message-box">
                     <div key={key}>
