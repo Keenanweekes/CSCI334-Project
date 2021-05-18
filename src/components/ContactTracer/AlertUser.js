@@ -31,6 +31,7 @@ const AlertUser = () => {
         console.log(email);
         const docRef = firestore.collection("users").doc(email);
         docRef.update({messages: firebase.firestore.FieldValue.arrayUnion(newCloseContactMessage(email))});
+        docRef.update({notified: false});
     }
 
     const messageCloseContact = async () => {

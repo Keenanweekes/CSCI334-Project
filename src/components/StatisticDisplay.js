@@ -26,7 +26,7 @@ const collectStats = () =>
 }
 
 const StatisticDisplay = () => {
-    collectStats();
+
     return (
         
         <div className="big-container">

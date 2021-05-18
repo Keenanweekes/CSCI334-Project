@@ -7,8 +7,6 @@ import HealthNavBar from './HealthWorker/HealthNavBar';
 
 const Header = (props) => {
 
-    console.log(props.email);
-
     if(props.userType === "User") {
         return(
             <header>

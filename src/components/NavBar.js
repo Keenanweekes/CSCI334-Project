@@ -21,7 +21,6 @@ const NavBar = (props) => {
         firestore.collection("users").doc(props.userName).get().then( user =>{
             const data = user.data();
             setMessages(data.messages);
-            console.log(data.messages);
         })
     }
 }
@@ -32,13 +31,13 @@ const NavBar = (props) => {
                 <nav id="nav-wrap">
                     <a className="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
 	                <a className="mobile-btn" href="#home" title="Hide navigation">Hide navigation</a>
-                    {getUserMessages(props.userName)}
+                    
                         <ul id="nav" className="nav">
                             <li><a href="#" onClick={() => setActive("VaccineNews")}>Vaccine News</a></li>
                             <li><a href="#" onClick={() => setActive("VaccineRollout")}>Vaccine Rollout</a></li>
                             <li><a href="#" onClick={() => setActive("CheckInForm")}>Check in</a></li>
                             <li><a href="#" onClick={() => setActive("CovidStats")}>Covid-19 Stats</a></li>
-                            <li><a href="#" onClick={() => setActive("Messages")}>Messages</a></li>
+                            <li><a href="#" onClick={() => {setActive("Messages"); getUserMessages(props.userName)}}>Messages</a></li>
                             <li className="right"><a href="#" onClick={() => setActive("Account")}>{props.userName}</a></li>
                         </ul>
 

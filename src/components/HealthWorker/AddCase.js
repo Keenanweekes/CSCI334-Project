@@ -58,7 +58,8 @@ const AddCase = () => {
 
     function addMessageToFirebase(email) {
         const docRef = firestore.collection("users").doc(email);
-        docRef.update({messages: firebase.firestore.FieldValue.arrayUnion(newPositiveMessage(email))});//thing took so long to get working
+        docRef.update({messages: firebase.firestore.FieldValue.arrayUnion(newPositiveMessage(email))});
+        docRef.update({notified: false});
     }
     return (
         <div className="account-container">
