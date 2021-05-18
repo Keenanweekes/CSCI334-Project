@@ -56,7 +56,8 @@ const Register = () => {
       lastname: lastname,
       mobile: mobile,
       dob: dob,
-      address: address
+      address: address,
+      covidPositive: false
     })
     .then(function () {
       console.log("Firestore Success");
