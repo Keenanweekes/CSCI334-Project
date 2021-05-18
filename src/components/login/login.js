@@ -3,6 +3,8 @@ import Register from "./register";
 import Header from '../Header';
 import fire from '../../fire';
 
+var firestore = fire.firestore();
+
 const Login = () => {
   const [state, setState] = useState("");
   const [userType, setUserType] = useState("");
@@ -10,11 +12,19 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [notification, setNotification] = useState("");
 
   const clearErrors = () => {
     setEmailError("")
     setPasswordError("")
   }
+
+  function checkNotification(){
+    firestore.collection("users").doc(email).get().then(user =>{
+        const data = user.data();
+        setNotification(data.notified);
+    });
+}
 
   const handleLogin = () => {
     clearErrors();
@@ -31,6 +41,8 @@ const Login = () => {
           break;
       }
     });
+
+    checkNotification();
   }
 
   const authListener = () => {
@@ -103,7 +115,7 @@ const Login = () => {
       </div>
       )}
       <div className="state">
-        {state === "Header" && <Header userType={userType} email={email} />}
+        {state === "Header" && <Header userType={userType} email={email} check={notification}/>}
         {state === "Register" && <Register />}
       </div>
     </div>

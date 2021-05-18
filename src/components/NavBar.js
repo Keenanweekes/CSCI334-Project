@@ -9,11 +9,12 @@ import StatisticDisplay from './StatisticDisplay';
 import LogInScreen from './login/login';
 import Messages from './Messages';
 import fire from '../fire';
+import Notification from './notification';
 
 var firestore = fire.firestore();
 
 const NavBar = (props) => {
-    const [active, setActive] = useState("VaccineNews");
+    const [active, setActive] = useState("Notification");
     const [messages, setMessages] = useState("");
 
     function getUserMessages(){
@@ -40,7 +41,7 @@ const NavBar = (props) => {
                             <li><a href="#" onClick={() => {setActive("Messages"); getUserMessages(props.userName)}}>Messages</a></li>
                             <li className="right"><a href="#" onClick={() => setActive("Account")}>{props.userName}</a></li>
                         </ul>
-
+          
                 </nav>
             </div>
 
@@ -51,6 +52,7 @@ const NavBar = (props) => {
                 {active === "CovidStats" && <StatisticDisplay />}
                 {active === "Messages" && <Messages messageArray={messages}/>}
                 {active === "Account" && <AccountEdit />}
+                {active === "Notification" && <Notification email={props.userName} check={props.check} />}
             </div>
         </div>
     );

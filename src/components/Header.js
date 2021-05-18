@@ -4,15 +4,17 @@ import TopBanner from './TopBanner';
 import TracerNavBar from './ContactTracer/TracerNavBar';
 import './layout.css';
 import HealthNavBar from './HealthWorker/HealthNavBar';
+import Notification from './notification';
 
 const Header = (props) => {
 
     if(props.userType === "User") {
         return(
             <header>
+                
                 <div>
                     <TopBanner />
-                    <NavBar userName= {props.email}/>
+                    <NavBar userName= {props.email} check={props.check}/>
                 </div>
             </header>
         );
