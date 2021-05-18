@@ -1,6 +1,6 @@
 export const userRecords = [
     {
-        "username":"ryan_castles",
+        "username":"albertiannelli@gmail.com",
         "positive":true,
         "locations": [
             {
@@ -18,7 +18,7 @@ export const userRecords = [
         ]
     },
     {
-        "username":"jason_martin",
+        "username":"b69@gmail.com",
         "positive":true,
         "locations": [
             {
@@ -36,7 +36,7 @@ export const userRecords = [
         ]
     },
     {
-        "username":"albert_iannelli",
+        "username":"cunt@gmail.com",
         "positive":true,
         "locations": [
             {
@@ -54,7 +54,7 @@ export const userRecords = [
         ]
     },
     {
-        "username":"keenan_weekes",
+        "username":"george@mail.com",
         "positive":true,
         "locations": [
             {
