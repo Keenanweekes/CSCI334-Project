@@ -2,9 +2,39 @@ import {React, useState} from 'react';
 import fire from '../../fire';
 import MessageSent from './messageSent';
 import '../layout.css';
+
 import firebase from 'firebase';
 
 var firestore = fire.firestore();
+
+import "firebase/analytics";
+import "firebase/auth";
+import "firebase/firestore";
+
+
+function addCaseToDb()
+{
+    //get the users inputs in the text fields
+    var email = document.getElementById("id").value;
+    var date = document.getElementById("date").value;
+    var practice = document.getElementById("practice").value;
+
+    var docRef = firestore.collection("users").doc(email);// search for their document in the db
+
+    docRef.update({
+        covidPositive:[
+            true, date, practice
+        ]
+    })
+    .then(() =>{
+        console.log("Success")
+        //here we would send a message to the contact tracer to alert them of a positive case for this person
+    })
+    .catch((error) =>{ 
+        console.error("Error updating document: ", error) // possible alert to let the user know that email is incorrect
+    })
+}
+
 
 const AddCase = () => {
 
@@ -44,18 +74,19 @@ const AddCase = () => {
                         </label>
                         <label>
                             Date
-                            <input type="date" />
+                            <input type="date" id = "date" />
                         </label>
                         <label>
                             Medical Practice
-                            <input type="text" />
+                            <input type="text" id = "practice" />
                         </label>
-                        <button onClick={() => {addMessageToFirebase(email); setState("MessageSent")}}>Add</button>
+                        <button onClick={() => {addMessageToFirebase(email); setState("MessageSent"); addCaseToDb()}}>Add</button>
                     </div>
             </div>
 
             <div>
                 {state === "MessageSent" && <MessageSent caseID={email}/>}
+
             </div>
         </div>
     );

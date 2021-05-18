@@ -10,20 +10,46 @@ import "firebase/firestore";
 
 
 var firestore = firebase.firestore();
+var date = new Date();
+
+var day = date.getDate()
+var month = date.getMonth() + 1
+var year = date.getFullYear()
+
+var time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(); // get the full time into a string
+var currentDate = day + "/" + month + "/" + year;//get full date into string
+
+
 const checkInDb = () =>
 {
-    var docRef = firestore.collection("users").doc("updateTest");
-    docRef.set({
-        firstname:"test"
-      }
-        ).then(function (){
-          console.log("Success");
-        }).catch(function(error){
-          console.log("Error:", error);
-        });
-    
+    var user = firebase.auth().currentUser; // get the current user login in
+    var docRef = firestore.collection("users").doc(user.email);// search for their document in the db
+
+    var business = document.getElementById("business").value
+    var address = document.getElementById("address").value
+
+    // Check to see if an empty field was detected
+    if (business == "" || address == "") {
+        alert("Empty field detected")
+        return;
+      } 
+
+    var fullCheckInString = business + " , " + address + ", " + currentDate + ", " + time; // get the users full check in togethr into one string
+
+    //updates the current logged in users record and appends any new check ins to the previous check ins array.
+    docRef.update({
+        checkins: firebase.firestore.FieldValue.arrayUnion(fullCheckInString)
+    })
+    .then(() =>{
+        // possible clearing of filled in fields here, was experiencing some errors to didnt do it for now
+    })
+    .catch((error) =>{ 
+        console.error("Error updating document: ", error)
+    })
 
 }
+
+
 const Form = (props) => {
     var d = new Date().toLocaleTimeString();
 
@@ -38,20 +64,21 @@ const Form = (props) => {
                     <form>
                         <label>
                             Business Name
-                            <input type="text"  id="business" />
+                            <input type="text"  id = "business" />
                         </label>
                         <label>
                             Suburb
                             <input type="text" id = "address" />
                         </label>
                         <label>
-                            Email
-                            <input type="text" id = "email" />
+                            Date
+                            <input type="text" id = "date" value = {currentDate} readOnly/>
                         </label>
                         <label>
-                            Mobile
-                            <input type="text" id = "mobile" />
+                            Time
+                            <input type = "text" id = "time" value = {time} readOnly/>
                         </label>
+
 
                         <input type="submit" value="Add Dependant"></input>
                     </form>

@@ -2,9 +2,33 @@ import React, { Component } from 'react';
 import { statisticData } from './statisticData';
 import './layout.css';
 
-const StatisticDisplay = () => {
+import firebase from "firebase/app";
+import "firebase/analytics";
 
+import "firebase/auth";
+import "firebase/firestore";
+
+var firestore = firebase.firestore();
+const users = [];
+
+//need to call this one time per day or login because many reads could use up the free operations of firebase
+const collectStats = () =>
+{
+   
+    firebase.firestore().collection("users").get()//get all records.
+    .then(querysnapshot =>{
+        querysnapshot.docs.forEach(doc =>{
+            users.push(doc.data()); // json object is pushed inside of array for later use
+            console.log(doc.data())
+        });
+    });
+
+}
+
+const StatisticDisplay = () => {
+    collectStats();
     return (
+        
         <div className="big-container">
             {statisticData.map((data, key) => {
                 return (
