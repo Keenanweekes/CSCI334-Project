@@ -2,15 +2,12 @@ import {React, useState} from 'react';
 import fire from '../../fire';
 import MessageSent from './messageSent';
 import '../layout.css';
-
-import firebase from 'firebase';
-
-var firestore = fire.firestore();
-
 import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
+import firebase from 'firebase';
 
+var firestore = fire.firestore();
 
 function addCaseToDb()
 {
@@ -70,7 +67,7 @@ const AddCase = () => {
                     <div>
                         <label>
                             ID
-                            <input type="text" name="name" onChange={event => setEmail(event.target.value)} />
+                            <input type="text" id = "id" name="name" onChange={event => setEmail(event.target.value)} />
                         </label>
                         <label>
                             Date
