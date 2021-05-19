@@ -1,36 +1,55 @@
-import React from 'react';
+import React, {useState} from "react";
 import '../layout.css';
-import firebase from "firebase/app";
+import { UpdateStats } from '../AddStat';
 
 
 const Certify = () => {
+
+    const [email, setEmail] = useState("");
+    const [date, setDate] = useState("");
+    const [time, setTime] = useState("");
+    const [brand, setBrand] = useState("");
+    const [dosageNum, setDosageNum] = useState("");
+
+    
+    const certifyVaccination = () => {
+
+        if (email == "" || date == "" || time == "" || brand == "" || dosageNum == "") {
+            alert("Empty field detected")
+            return;
+        } else {
+            
+            UpdateStats(date, "vaccination")
+        }
+    }
+
     return (
         <div className="account-container">
             <div className="account-edit">
                 <h2>Certify Vaccination</h2>
-                    <form onsubmit = "addCaseToDb()">
-                        <label>
-                            ID
-                            <input type="text" name="name"  />
-                        </label>
-                        <label>
-                            Date
-                            <input type="date" />
-                        </label>
-                        <label>
-                            Time
-                            <input type="text" name="name" />
-                        </label>
-                        <label>
-                            Vaccine Brand
-                            <input type="text" name="name" />
-                        </label>
-                        <label>
-                            Dosage #
-                            <input type="text" name="name" />
-                        </label>
-                        <input type="submit" value="Certify" ></input>
-                    </form>
+                <div>
+                    <label>
+                        Email
+                        <input type="text" id="email" onChange={(e) => setEmail(e.target.value)} />
+                    </label>
+                    <label>
+                        Date
+                        <input type="date" id="date" onChange={(e) => setDate(e.target.value)} />
+                    </label>
+                    <label>
+                        Time
+                        <input type="text" id="time" onChange={(e) => setTime(e.target.value)} />
+                    </label>
+                    <label>
+                        Vaccine Brand
+                        <input type="text" id="brand" onChange={(e) => setBrand(e.target.value)} />
+                    </label>
+                    <label>
+                        Dosage #
+                        <input type="text" id="dosage" onChange={(e) => setDosageNum(e.target.value)} />
+                    </label>
+                    <button onClick={certifyVaccination}>Submit</button>
+                </div>
             </div>
         </div>
     );

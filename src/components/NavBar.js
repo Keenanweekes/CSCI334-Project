@@ -58,6 +58,7 @@ const NavBar = (props) => {
             setMessages(data.messages);
         })
     }
+}
 
     return(
         <div>

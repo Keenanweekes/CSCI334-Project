@@ -6,6 +6,7 @@ import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
 import firebase from 'firebase';
+import { UpdateStats } from '../AddStat';
 
 var firestore = fire.firestore();
 
@@ -18,6 +19,8 @@ function addCaseToDb()
 
     var docRef = firestore.collection("users").doc(email);// search for their document in the db
 
+    
+
     docRef.update({
         covidPositive:[
             true, date, practice
@@ -25,9 +28,11 @@ function addCaseToDb()
     })
     .then(() =>{
         console.log("Success")
+        UpdateStats(date, "case")
         //here we would send a message to the contact tracer to alert them of a positive case for this person
     })
     .catch((error) =>{ 
+        
         console.error("Error updating document: ", error) // possible alert to let the user know that email is incorrect
     })
 }
