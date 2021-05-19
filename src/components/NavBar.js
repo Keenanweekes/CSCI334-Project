@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './layout.css';
-
 import CheckInForm from './CheckInForm';
 import VaccineNews from './VaccineNews';
 import VaccineRollout from './VaccineRollout';
@@ -58,6 +57,7 @@ const NavBar = (props) => {
             setMessages(data.messages);
         })
     }
+}
 
     return(
         <div>
