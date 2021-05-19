@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './layout.css';
 
 const StatisticDisplay = (props) => {
-
     return (
+        
         <div className="big-container">
             
             {props.statData.map((data) => {

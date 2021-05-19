@@ -597,3 +597,38 @@ header h2 {
     padding: 20px;
     border-radius: 10px;
   }
+
+  /* ========================================= */
+
+  
+
+  .message-container p {
+    padding: 5px;
+  }
+
+  .message-box{
+    text-align: center;
+    margin: 20px auto;
+    width: 35%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #F1F6F6;
+    border: 1px solid #0D3155;
+    font-size: large;
+
+  }
+
+  /*=======================================*/
+
+  .sent-box{
+    text-align: center;
+    margin: 20px auto;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #F1F6F6;
+    border: 1px solid #0D3155;
+    font-size: large;
+  }
+
+  

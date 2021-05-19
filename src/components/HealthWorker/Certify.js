@@ -1,12 +1,14 @@
 import React from 'react';
 import '../layout.css';
+import firebase from "firebase/app";
+
 
 const Certify = () => {
     return (
         <div className="account-container">
             <div className="account-edit">
                 <h2>Certify Vaccination</h2>
-                    <form>
+                    <form onsubmit = "addCaseToDb()">
                         <label>
                             ID
                             <input type="text" name="name"  />
@@ -27,7 +29,7 @@ const Certify = () => {
                             Dosage #
                             <input type="text" name="name" />
                         </label>
-                        <input type="submit" value="Certify"></input>
+                        <input type="submit" value="Certify" ></input>
                     </form>
             </div>
         </div>
