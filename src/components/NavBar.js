@@ -16,6 +16,16 @@ var firestore = fire.firestore();
 const NavBar = (props) => {
     const [active, setActive] = useState("Notification");
     const [messages, setMessages] = useState("");
+    const [dob, setDOB] = useState("");
+
+    function getUserDOB(){
+        if(props.userName != ""){
+        firestore.collection("users").doc(props.userName).get().then( user =>{
+            const data = user.data();
+            setDOB(data.dob);
+        })
+    }
+}
 
     function getUserMessages(){
         if(props.userName != ""){
@@ -35,7 +45,7 @@ const NavBar = (props) => {
                     
                         <ul id="nav" className="nav">
                             <li><a href="#" onClick={() => setActive("VaccineNews")}>Vaccine News</a></li>
-                            <li><a href="#" onClick={() => setActive("VaccineRollout")}>Vaccine Rollout</a></li>
+                            <li><a href="#" onClick={() => {setActive("VaccineRollout"); getUserDOB(props.userName)}}>Vaccine Rollout</a></li>
                             <li><a href="#" onClick={() => setActive("CheckInForm")}>Check in</a></li>
                             <li><a href="#" onClick={() => setActive("CovidStats")}>Covid-19 Stats</a></li>
                             <li><a href="#" onClick={() => {setActive("Messages"); getUserMessages(props.userName)}}>Messages</a></li>
@@ -48,7 +58,7 @@ const NavBar = (props) => {
             <div>
                 {active === "CheckInForm" && <CheckInForm />}
                 {active === "VaccineNews" && <VaccineNews />}
-                {active === "VaccineRollout" && <VaccineRollout />}
+                {active === "VaccineRollout" && <VaccineRollout dob={dob}/>}
                 {active === "CovidStats" && <StatisticDisplay />}
                 {active === "Messages" && <Messages messageArray={messages}/>}
                 {active === "Account" && <AccountEdit />}

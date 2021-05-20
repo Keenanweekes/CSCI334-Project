@@ -135,13 +135,18 @@ const AlertUser = () => {
                     {positives.map((data, key) => {
                         return(
                         data.map((stuff) => {
+
+                            if(typeof stuff.checkins != "undefined"){
+                                
+                            }
+           
                             return( 
                                 <div key={key}>
                                     <h3>User: </h3>
                                     <p>{stuff.email}</p>
                                     <br></br>
                                     <h4>User Checkins: </h4>
-                                    <p>{stuff.checkins}</p>
+                                    <p>{stuff.checkins}</p>                        
                                 </div>
                                     )
                         })
