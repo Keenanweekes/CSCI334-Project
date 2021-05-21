@@ -161,7 +161,7 @@ const updateUser = event =>
 
 }
 
-const AccountEdit = () => {
+const AccountEdit = (props) => {
     return (
         <div className="account-container">
             <h3>Account Details</h3>
@@ -199,7 +199,7 @@ const AccountEdit = () => {
 
             <h3>Vaccine Certificates</h3>
             <div className="account-edit">
-                <VaccineCarousal />
+                <VaccineCarousal dose1={props.dose1} dose2={props.dose2} />
             </div>
         </div>
     );
