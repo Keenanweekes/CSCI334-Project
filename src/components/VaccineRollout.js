@@ -16,7 +16,7 @@ const VaccineRollout = (props) => {
 
                 if(age >= data.ageStart && age <= data.ageEnd){
                 return (
-                    <div key={key} style={{border : "1px solid red"}}className="phase-container">
+                    <div key={key} style={{border : "2px solid red"}}className="phase-container">
                         <h3>{data.phaseNumber}</h3>
                         
                         <ul>

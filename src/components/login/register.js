@@ -93,7 +93,7 @@ const Register = () => {
                 <input type="text" id = "mobile" placeholder = "Mobile Number" onChange={(e) => setMobile(e.target.value)} />
               </div>
               <div className="form-group">
-                <input type="text" id ="dob" placeholder = "Date of Birth" onChange={(e) => setDob(e.target.value)} />
+                <input type="date" id ="dob" placeholder = "Date of Birth" onChange={(e) => setDob(e.target.value)} />
               </div>
               <div className="form-group">
                 <input type="text" id = "address" placeholder = "Address" onChange={(e) => setAddress(e.target.value)} />
