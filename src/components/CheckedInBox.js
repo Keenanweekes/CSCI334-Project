@@ -33,7 +33,7 @@ const CheckInForm = (props) =>  {
                 <h3>{props.business}</h3>
                 <span>Checked in</span>
                 <br></br>
-                <span>{day} {month} {year} {time}</span>
+                <span>{day} {month} {year} {props.time}</span>
                 <br></br>
                 <button onClick={() => setActive("CheckedOut")}>Check Out</button> 
             </div>

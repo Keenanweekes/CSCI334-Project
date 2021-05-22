@@ -85,7 +85,7 @@ const Form = (props) => {
 
                 <div>
                     {active === "CheckedIn" && <div className="checked-in-arrow"></div>}
-                    {active === "CheckedIn" && <CheckedInBox business={document.getElementById("business").value}/>}                          
+                    {active === "CheckedIn" && <CheckedInBox business={document.getElementById("business").value} time={testTime}/>}                          
                 </div>           
             </div>
         );
