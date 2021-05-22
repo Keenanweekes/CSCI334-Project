@@ -51,7 +51,8 @@ const checkInDb = () =>
 
 
 const Form = (props) => {
-    var d = new Date().toLocaleTimeString();
+    var test = new Date();
+    var testTime = test.toLocaleTimeString();
 
     const clickCheckIn = () => setActive("CheckedIn");
 
@@ -76,7 +77,7 @@ const Form = (props) => {
                         </label>
                         <label>
                             Time
-                            <input type = "text" id = "time" value = {time} readOnly/>
+                            <input type = "text" id = "time" value = {testTime} readOnly/>
                         </label>
                     </form>
                     <button onClick={() => {clickCheckIn(); checkInDb()}}>Check in</button> 
