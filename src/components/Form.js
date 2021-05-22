@@ -78,9 +78,6 @@ const Form = (props) => {
                             Time
                             <input type = "text" id = "time" value = {time} readOnly/>
                         </label>
-
-
-                        <input type="submit" value="Add Dependant"></input>
                     </form>
                     <button onClick={() => {clickCheckIn(); checkInDb()}}>Check in</button> 
                 </div>

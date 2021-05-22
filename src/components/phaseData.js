@@ -11,7 +11,8 @@ export const phaseData = [
             {
                 "group":"Aged care and disability care staff"
             }
-        ]
+        ],
+        "age":"N/A"
     },
     {
         "phaseNumber":"Phase 1B",
@@ -34,7 +35,9 @@ export const phaseData = [
             {
                 "group":"Adults with an underlying medical condition or significant disability"
             }
-        ]
+        ],
+        "ageStart":70,
+        "ageEnd":200
     },
     {
         "phaseNumber":"Phase 2A",
@@ -51,7 +54,9 @@ export const phaseData = [
             {
                 "group":"Other critical and high risk workers"
             }
-        ]
+        ],
+        "ageStart":50,
+        "ageEnd":70
     },
     {
         "phaseNumber":"Phase 2B",
@@ -63,7 +68,9 @@ export const phaseData = [
                 "group":"Catch up any unvaccinated Australians from previous phases"
 
             }
-        ]
+        ],
+        "ageStart":16,
+        "ageEnd":50
     },
     {
         "phaseNumber":"Phase 3",
@@ -71,6 +78,9 @@ export const phaseData = [
             {
                 "group":"< 16 if recommended"
             }
-        ]
+        ],
+        "ageStart":0,
+        "ageEnd":16
+
     }
 ]
