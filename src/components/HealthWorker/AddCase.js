@@ -51,8 +51,8 @@ const AddCase = () => {
     var month = months[currentDate.getMonth()];
     var year = currentDate.getFullYear();
 
-    function newPositiveMessage(email) {
-        var message = "Test Result: Dear " + email + " your recent coronavirus test was POSITIVE. \n" +
+    function newPositiveMessage(lname, fname) {
+        var message = "Test Result: Dear " + fname + " " + lname + " your recent coronavirus test was POSITIVE. \n" +
                       "If well you can resume normal activities. If you have been previously instructed\n" +
                       " to be isolated because of recent overseas travel or recent contact of a \n" +
                       "proven case you should remain in isolation. If your symptoms get worse please \n" +
@@ -61,11 +61,19 @@ const AddCase = () => {
         return message;
     }
 
-    function addMessageToFirebase(email) {
+    const addMessageToFirebase = async (email) =>{
+        var lname;
+        var fname;
         const docRef = firestore.collection("users").doc(email);
-        docRef.update({messages: firebase.firestore.FieldValue.arrayUnion(newPositiveMessage(email))});
-        docRef.update({notified: false});
+        await docRef.get().then(user =>{
+            var data = user.data();
+            lname = data.lastname;
+            fname = data.firstname;
+        })
+        await docRef.update({messages: firebase.firestore.FieldValue.arrayUnion(newPositiveMessage(lname, fname))});
+        await docRef.update({notified: false});
     }
+
     return (
         <div className="account-container">
             <div className="account-edit">
