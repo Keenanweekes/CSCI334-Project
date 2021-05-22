@@ -12,6 +12,7 @@ const AlertUser = () => {
 
     const [active, setActive] = useState("");
     const [positives, setPositives] = useState("");
+    const [lname, setLname] = useState("");
 
     var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     var currentDate = new Date();
@@ -20,18 +21,24 @@ const AlertUser = () => {
     var month = months[currentDate.getMonth()];
     var year = currentDate.getFullYear();
 
-    function newCloseContactMessage(email) {
-        var message = "Dear " + email + ". You have been in close contact with someone who has COVID-19. \n" +
+    function newCloseContactMessage(lname, fname) {
+        var message = "Dear " + fname + " " + lname + ". You have been in close contact with someone who has COVID-19. \n" +
                       "You are at high risk of having and spreading it. Self-isolate now for 14 days. \n\n\n" + 
                       "Message sent: " + time + "  " + day + "/" + month + "/" + year; 
         return message;
     }
 
-    function addMessageToFirebase(email) {
-        console.log(email);
+    const addMessageToFirebase = async (email) =>{
+        var lname;
+        var fname;
         const docRef = firestore.collection("users").doc(email);
-        docRef.update({messages: firebase.firestore.FieldValue.arrayUnion(newCloseContactMessage(email))});
-        docRef.update({notified: false});
+        await docRef.get().then(user =>{
+            var data = user.data();
+            lname = data.lastname;
+            fname = data.firstname;
+        })
+        await docRef.update({messages: firebase.firestore.FieldValue.arrayUnion(newCloseContactMessage(lname, fname))});
+        await docRef.update({notified: false});
     }
 
     const messageCloseContact = async () => {
