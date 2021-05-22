@@ -13,6 +13,8 @@ const Login = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [notification, setNotification] = useState("");
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
 
   const clearErrors = () => {
     setEmailError("")
@@ -23,6 +25,8 @@ const Login = () => {
     firestore.collection("users").doc(email).get().then(user =>{
         const data = user.data();
         setNotification(data.notified);
+        setFname(data.firstname);
+        setLname(data.lastname);
     });
 }
 
@@ -115,7 +119,7 @@ const Login = () => {
       </div>
       )}
       <div className="state">
-        {state === "Header" && <Header userType={userType} email={email} check={notification}/>}
+        {state === "Header" && <Header userType={userType} email={email} check={notification} fname={fname} lname={lname}/>}
         {state === "Register" && <Register />}
       </div>
     </div>

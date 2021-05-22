@@ -96,7 +96,7 @@ function getUserCertification(){
                             <li><a href="#" onClick={() => setActive("CheckInForm")}>Check in</a></li>
                             <li><a href="#" onClick={() => setActive("CovidStats")}>Covid-19 Stats</a></li>
                             <li><a href="#" onClick={() => {setActive("Messages"); getUserMessages(props.userName)}}>Messages</a></li>
-                            <li className="right"><a href="#" onClick={() => {setActive("Account"); getUserCertification(props.userName)}}>{props.userName}</a></li>
+                            <li className="right"><a href="#" onClick={() => {setActive("Account"); getUserCertification(props.userName)}}>{props.fname} {props.lname}</a></li>
                         </ul>
           
                 </nav>
