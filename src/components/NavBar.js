@@ -1,6 +1,5 @@
-import React, { Component, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './layout.css';
-
 import CheckInForm from './CheckInForm';
 import VaccineNews from './VaccineNews';
 import VaccineRollout from './VaccineRollout';
@@ -12,9 +11,13 @@ import fire from '../fire';
 import Notification from './notification';
 
 var firestore = fire.firestore();
+var docRef = firestore.collection("statistics"); 
+var dailyData = []
 
 const NavBar = (props) => {
+
     const [active, setActive] = useState("Notification");
+    const [statData, setStatData] = useState("");
     const [messages, setMessages] = useState("");
     const [dob, setDOB] = useState("");
     const [dose1, setDose1] = useState("");
@@ -28,6 +31,38 @@ const NavBar = (props) => {
         })
     }
 }
+
+    useEffect(() => {
+        ReadStats();
+    }, []);
+
+    const ReadStats = event => {
+        docRef.get().then((querySnapshot) => {
+            var totalCases, totalTests, totalVaccinations
+            querySnapshot.forEach((doc) => {
+                if (doc.id == "Totals") {
+                    totalCases = doc.data().TotalCases
+                    totalTests = doc.data().TotalTests
+                    totalVaccinations = doc.data().TotalVaccinations
+                } else {
+                    dailyData.push({
+                        date: doc.data().FormattedDate,
+                        newCases: doc.data().NewCases,
+                        newTests: doc.data().NewTests,
+                        newVaccinations: doc.data().NewVaccinations,
+                        ICU: doc.data().InICU,
+                        deaths: doc.data().Deaths,
+                    })
+                }
+            });
+            dailyData.map((data) => {
+                data.totalCases = totalCases
+                data.totalTests = totalTests
+                data.totalVaccinations = totalVaccinations
+            })
+            setStatData(dailyData)
+        });   
+    }
 
     function getUserMessages(){
         if(props.userName != ""){
@@ -71,7 +106,7 @@ function getUserCertification(){
                 {active === "CheckInForm" && <CheckInForm />}
                 {active === "VaccineNews" && <VaccineNews />}
                 {active === "VaccineRollout" && <VaccineRollout dob={dob}/>}
-                {active === "CovidStats" && <StatisticDisplay />}
+                {active === "CovidStats" && <StatisticDisplay statData={statData} />}
                 {active === "Messages" && <Messages messageArray={messages}/>}
                 {active === "Account" && <AccountEdit dose1={dose1} dose2={dose2}/>}
                 {active === "Notification" && <Notification email={props.userName} check={props.check} />}
