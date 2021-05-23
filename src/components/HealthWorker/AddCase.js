@@ -53,11 +53,9 @@ const AddCase = () => {
 
     function newPositiveMessage(lname, fname) {
         var message = "Test Result: Dear " + fname + " " + lname + " your recent coronavirus test was POSITIVE. \n" +
-                      "If well you can resume normal activities. If you have been previously instructed\n" +
-                      " to be isolated because of recent overseas travel or recent contact of a \n" +
-                      "proven case you should remain in isolation. If your symptoms get worse please \n" +
-                      "see your GP (phone ahead), or go to your closest emergency department if you \n" +
-                      "are severely unwell. \n\n\n" + "Message sent: " + time + "  " + day + "/" + month + "/" + year; 
+                      "You are required to self isolate for 14 days, if symptoms become increasingly worse contact NSW \n" + 
+                      "emergency services immediately. You will be contact shortly via phone call to explain the nessassary \n" + 
+                      "steps for your quarantine. \n" + "Message sent: " + time + "  " + day + "/" + month + "/" + year; 
         return message;
     }
 
