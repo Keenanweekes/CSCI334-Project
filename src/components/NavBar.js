@@ -25,28 +25,28 @@ const NavBar = (props) => {
 
     const ReadStats = event => {
         docRef.get().then((querySnapshot) => {
-            var totalCases, totalTests, totalVaccinations
             querySnapshot.forEach((doc) => {
-                if (doc.id == "Totals") {
-                    totalCases = doc.data().TotalCases
-                    totalTests = doc.data().TotalTests
-                    totalVaccinations = doc.data().TotalVaccinations
-                } else {
-                    dailyData.push({
-                        date: doc.data().FormattedDate,
-                        newCases: doc.data().NewCases,
-                        newTests: doc.data().NewTests,
-                        newVaccinations: doc.data().NewVaccinations,
-                        ICU: doc.data().InICU,
-                        deaths: doc.data().Deaths,
-                    })
-                }
+                dailyData.push({
+                    date: new Date(doc.id),
+                    formattedDate: doc.data().FormattedDate,
+                    newCases: doc.data().NewCases,
+                    newTests: doc.data().NewTests,
+                    newVaccinations: doc.data().NewVaccinations,
+                })
             });
-            dailyData.map((data) => {
-                data.totalCases = totalCases
-                data.totalTests = totalTests
-                data.totalVaccinations = totalVaccinations
+            var casesCount = 0, testsCount = 0, vaccinationsCount = 0
+            dailyData.sort((a, b) => b.date + a.date) // Sort old to new
+            
+            dailyData.map((data) => { // map data and add up totals 
+                casesCount += data.newCases
+                testsCount += data.newTests
+                vaccinationsCount += data.newVaccinations
+                data.totalCases = casesCount
+                data.totalTests = testsCount
+                data.totalVaccinations = vaccinationsCount
             })
+            dailyData.sort((a, b) => b.date - a.date) // Sort new to old
+            
             setStatData(dailyData)
         });   
     }
