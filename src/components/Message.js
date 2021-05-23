@@ -15,7 +15,8 @@ const Message = (props) => {
 
     return(
         <div className="message-wrap">
-            
+
+            <h1 className="message-header">Messages</h1>
             {checkIfEmpty().map((data, key) => {
                 return(
                     <div className="message-box">

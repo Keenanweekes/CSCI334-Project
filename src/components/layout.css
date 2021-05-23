@@ -646,4 +646,11 @@ header h2 {
     text-align: center;
   }
 
+  .message-header{
+    text-align: center;
+    margin-top: 20px;
+    color:#0D3155;
+    text-transform: uppercase;
+
+  }
   

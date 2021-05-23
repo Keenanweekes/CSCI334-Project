@@ -100,7 +100,9 @@ const AlertUser = () => {
                             }
 
                             if(samePlace == true && userDates[i] >= minusDangerousDate && userDates[i] <= plusDangerousDate){
-                                informList.push(doc.id);
+                                    informList.push(doc.id);
+                                    
+                                
                             }
                         }
 
@@ -110,7 +112,7 @@ const AlertUser = () => {
                 }
             });
         
-
+        console.log(informList);
         informList.forEach(element => addMessageToFirebase(element));
 
     }

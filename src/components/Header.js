@@ -14,7 +14,7 @@ const Header = (props) => {
                 
                 <div>
                     <TopBanner />
-                    <NavBar userName= {props.email} check={props.check} fname={props.lname} lname={props.lname}/>
+                    <NavBar userName= {props.email} check={props.check} fname={props.fname} lname={props.lname}/>
                 </div>
             </header>
         );
