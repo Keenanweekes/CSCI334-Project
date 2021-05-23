@@ -9,7 +9,7 @@ const StatisticDisplay = (props) => {
             {props.statData.map((data) => {
                 return (
                     <div>
-                        <span className="grid-span">{data.date}</span>
+                        <span className="grid-span">{data.formattedDate}</span>
                         <div className="grid-container">
                             <div>{data.newCases} <br></br><span>New Cases</span></div>
                             <div>{data.newTests}<br></br><span>New Tests</span></div>

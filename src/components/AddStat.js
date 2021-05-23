@@ -9,9 +9,8 @@ const months = ['January','February','March','April','May','June','July','August
 export function UpdateStats(date, stat) {
 
     var splitDate = date.split("-");
-    var dateKey = splitDate[2] +"-"+ splitDate[1] +"-"+ splitDate[0]
     
-    const dateDocRef = firestore.collection("statistics").doc(dateKey);
+    const dateDocRef = firestore.collection("statistics").doc(date);
     dateDocRef.get().then((doc) => {
 
         if (doc.exists) { // When a record exists update the count
@@ -58,31 +57,6 @@ export function UpdateStats(date, stat) {
                 console.log("Error:", error);
             });
         }
-    })
-    .then(() =>{    // Update total count
-
-        const totalsDocRef = firestore.collection("statistics").doc("Totals");
-        totalsDocRef.get().then((doc) => {
-            if (doc.exists) {
-                if (stat == "case") {
-                    totalsDocRef.update({ TotalCases: doc.data().TotalCases + 1 })
-                    .catch((error) =>{ console.error("Error updating document: ", error) })
-                } else if (stat == "test") {
-                    totalsDocRef.update({ TotalTests: doc.data().TotalTests + 1 })
-                    .catch((error) =>{ console.error("Error updating document: ", error) })
-                } else if (stat == "vaccination") {
-                    totalsDocRef.update({ TotalVaccinations: doc.data().TotalVaccinations + 1 })
-                    .catch((error) =>{ console.error("Error updating document: ", error) })
-                } else {
-                    console.log("Error incorrect string given to AddStat")
-                }
-            } else {
-                console.log("Error getting totals document")
-            }
-        }).catch((error) =>{
-            console.log("Error getting document: " + error)
-        })
-
     })
     .catch((error) => {
         console.log("Error getting document:", error);
