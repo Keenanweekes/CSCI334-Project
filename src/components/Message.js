@@ -8,28 +8,48 @@ const Message = (props) => {
         var emptyCheck = [];
         if(props.messageText != ""){
             emptyCheck = props.messageText;
-        }
+        } 
 
         return emptyCheck;
     }
 
-    return(
-        <div className="message-wrap">
 
-            <h1 className="message-header">Messages</h1>
-            {checkIfEmpty().map((data, key) => {
-                return(
-                    <div className="message-box">
-                    <div key={key}>
-                        <p>{data}</p>
-                    </div>
-                    </div>
-                )
-            })}
+    if(typeof props.messageText != "undefined") {
 
-        </div>
+        return(
+            <div className="message-wrap">
 
-    );
+                <h1 className="message-header">Messages</h1>
+                {checkIfEmpty().map((data, key) => {
+                    return(
+                        <div className="message-box">
+                            <div key={key}>
+                                <p>{data}</p>
+                            </div>
+                        </div>
+                    )
+                })}
+
+            </div>
+
+        );
+    } else {
+        return(
+            <div className="message-wrap">
+
+                <h1 className="message-header">Messages</h1>
+                
+                        <div className="message-box">
+                            <div>
+                                <p>No messages to display</p>
+                            </div>
+                        </div>
+                    )
+
+            </div>
+
+        );
+    }
 
 }
 

@@ -30,6 +30,7 @@ const Certify = () => {
             firestore.collection("users").doc(ID).update({dosage2: [ID, date, time, vaccineBrand, dosageNum]});
         }
     }
+
  
     const certifyVaccination = () => {
 
@@ -39,6 +40,7 @@ const Certify = () => {
         } else {
             
             UpdateStats(date, "vaccination")
+    
         }
 
     }
@@ -69,6 +71,7 @@ const Certify = () => {
                         <input type="text" id="dosage" onChange={(e) => setDosageNum(e.target.value)} />
                     </label>
                     <button onClick={() => {certifyVaccination(); getForm()}}>Submit</button>
+            
                 </div>
 
             </div>
