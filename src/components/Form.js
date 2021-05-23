@@ -54,7 +54,17 @@ const Form = (props) => {
     var test = new Date();
     var testTime = test.toLocaleTimeString();
 
-    const clickCheckIn = () => setActive("CheckedIn");
+    const clickCheckIn = () =>{ 
+
+
+        var business = document.getElementById("business").value
+        var address = document.getElementById("address").value
+        
+        if(business != "" && address != ""){
+            setActive("CheckedIn");
+        }
+
+    }
 
     const [active, setActive] = useState("");
 
