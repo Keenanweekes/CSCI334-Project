@@ -33,6 +33,8 @@ const NavBar = (props) => {
 }
 
     useEffect(() => {
+
+        console.log("shit cunt");
         ReadStats();
     }, []);
 
