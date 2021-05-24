@@ -116,7 +116,7 @@ const AlertUser = () => {
     }
 
     function getPositiveCases() {
-
+        var todaysDate = document.getElementById("todaysDate").value
         const positiveUsers = [];
         firestore.collection("users")
             .get().then((querySnapshot) => {
@@ -125,7 +125,9 @@ const AlertUser = () => {
                     var positiveTest = [];
                     positiveTest = userData.covidPositive;
                     if (typeof positiveTest != "undefined") {
-                        positiveUsers.push([userData]);
+                        if(positiveTest[1] == todaysDate) {
+                            positiveUsers.push([userData]);
+                        }
                     }
                 });
             })
@@ -169,6 +171,8 @@ const AlertUser = () => {
             <div className="account-container">
                 <div className="account-edit">
                     <h2>Dashboard</h2>
+                    <label>Date</label>
+                    <input type="date" id="todaysDate"></input>
                     <button onClick={() => { getPositiveCases(); document.getElementById("inform").innerHTML = "Positive Cases Recieved"; }}>Get Positive Cases</button>
                     <button onClick={() => setActive("SearchResults")}>Search Positive Cases</button>
                     <p id="inform"></p>
