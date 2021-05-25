@@ -76,6 +76,17 @@ const Login = (props) => {
     }
   }
 
+  function showPassword() {
+    var showPassBox = document.getElementById("show-password"),
+        password_box = document.getElementById("password");
+
+    if(showPassBox.checked) {
+      password_box.type = "text";
+    } else {
+      password_box.type = "password";
+    }
+  }
+
   return (
     <div className="base-container" >
       {state === 'Login' && (
@@ -93,7 +104,7 @@ const Login = (props) => {
               <p>{passwordError}</p>
             </div>
             <div className="show-password">
-              <input type="checkbox" name="show-password-checkbox" value="Show Password"></input>
+              <input type="checkbox" name="show-password-checkbox" value="Show Password" id="show-password" onClick={showPassword}></input>
               <label for="show-password-checkbox">Show Password</label>
             </div>
             <div className="remember-me">
