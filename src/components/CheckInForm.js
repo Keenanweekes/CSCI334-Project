@@ -3,12 +3,14 @@ import './layout.css';
 
 import Form from './Form';
 
-const CheckInForm = () => {
+const CheckInForm = (props) => {
+
+    console.log(props.email);
 
     return (
         <div>
             <div id="check-in">
-                <Form />
+                <Form email={props.email}/>
             </div>
         </div>
     );

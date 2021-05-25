@@ -20,10 +20,15 @@ var time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(); 
 var currentDate = day + "/" + month + "/" + year;//get full date into string
 
 
-const checkInDb = () =>
+const Form = (props) => {
+    var test = new Date();
+    var testTime = test.toLocaleTimeString();
+
+    function checkInDb ()
 {
-    var user = firebase.auth().currentUser; // get the current user login in
-    var docRef = firestore.collection("users").doc(user.email);// search for their document in the db
+    //var user = firebase.auth().currentUser; // get the current user login in
+   
+    var docRef = firestore.collection("users").doc(props.email);// search for their document in the db
 
     var business = document.getElementById("business").value
     var address = document.getElementById("address").value
@@ -48,11 +53,6 @@ const checkInDb = () =>
     })
 
 }
-
-
-const Form = (props) => {
-    var test = new Date();
-    var testTime = test.toLocaleTimeString();
 
     const clickCheckIn = () =>{ 
 

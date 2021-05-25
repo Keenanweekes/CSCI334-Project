@@ -5,7 +5,7 @@ import fire from '../../fire';
 
 var firestore = fire.firestore();
 
-const Login = () => {
+const Login = (props) => {
   const [state, setState] = useState("");
   const [userType, setUserType] = useState("");
   const [email, setEmail] = useState("");
@@ -51,7 +51,8 @@ const Login = () => {
 
   const authListener = () => {
     fire.auth().onAuthStateChanged(user => {
-      if (user) { // if user exists determine usertype and login
+
+      if (user && props.newAccount != true) { // if user exists determine usertype and login
         determineUserType(user["email"])
         setState("Header")
       } else {  // else stay on login screen

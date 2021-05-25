@@ -103,7 +103,7 @@ const NavBar = (props) => {
             </div>
 
             <div>
-                {active === "CheckInForm" && <CheckInForm />}
+                {active === "CheckInForm" && <CheckInForm email={props.userName}/>}
                 {active === "VaccineNews" && <VaccineNews />}
                 {active === "VaccineRollout" && <VaccineRollout dob={dob} />}
                 {active === "CovidStats" && <StatisticDisplay statData={statData} />}

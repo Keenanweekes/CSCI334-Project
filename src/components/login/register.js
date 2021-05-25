@@ -16,6 +16,7 @@ const Register = () => {
   const [mobile, setMobile] = useState("");
   const [dob, setDob] = useState("");
   const [address, setAddress] = useState("");
+  const [newAccount, setNewAccount] = useState("");
 
   const handleSignup = () => {
 
@@ -24,6 +25,8 @@ const Register = () => {
       alert("Empty field detected")
       return;
     } 
+
+    setNewAccount(true);
 
     // Create user login 
     fire.auth().createUserWithEmailAndPassword(email, password)
@@ -115,7 +118,7 @@ const Register = () => {
 
         </div>)}
         <div > 
-          {state === "Login" && <Login />}
+          {state === "Login" && <Login newAccount={newAccount}/>}
         </div>
 
     </div> 
