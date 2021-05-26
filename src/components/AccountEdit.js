@@ -186,7 +186,7 @@ const AccountEdit = (props) => {
                     </label>
                     <label>
                         Email
-                        <input type="text" id = "email" />
+                        <input type="text" id = "email" placeholder = {props.email} />
                     </label>
                     <label>
                         Mobile

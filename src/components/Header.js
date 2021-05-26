@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from "react";
 import NavBar from './NavBar';
 import TopBanner from './TopBanner';
 import TracerNavBar from './ContactTracer/TracerNavBar';
@@ -6,20 +6,20 @@ import './layout.css';
 import HealthNavBar from './HealthWorker/HealthNavBar';
 import Notification from './notification';
 
+
 const Header = (props) => {
 
-    if(props.userType === "User") {
-        return(
+    if (props.userType === "User") {
+        return (
             <header>
-                
                 <div>
                     <TopBanner />
-                    <NavBar userName= {props.email} check={props.check} fname={props.fname} lname={props.lname}/>
+                    <NavBar userName={props.email} fname={props.fname} lname={props.lname} />
                 </div>
             </header>
         );
-    } else if(props.userType === "Tracer") {
-        return(
+    } else if (props.userType === "Tracer") {
+        return (
             <header>
                 <div>
                     <TopBanner />
@@ -28,7 +28,7 @@ const Header = (props) => {
             </header>
         )
     } else {
-        return(
+        return (
             <header>
                 <div>
                     <TopBanner />

@@ -14,13 +14,14 @@ var firestore = fire.firestore();
 var docRef = firestore.collection("statistics");
 
 const NavBar = (props) => {
-
+    
     const [active, setActive] = useState("Notification");
     const [statData, setStatData] = useState("");
     const [messages, setMessages] = useState("");
     const [dob, setDOB] = useState("");
     const [dose1, setDose1] = useState("");
     const [dose2, setDose2] = useState("");
+    const [notification, setNotification] = useState("");
 
     function getUserDOB() {
         if (props.userName != "") {
@@ -31,8 +32,32 @@ const NavBar = (props) => {
         }
     }
 
+    // function readUser() {
+    //     const docRef = firestore.collection("users").doc(props.userName);
+    //     docRef.get().then((doc) => {
+    //         if (doc.exists) {
+              
+    //         } else {
+    //             console.log("Email doesn't exist for readuser")
+    //         }
+    //     });
+    // }
+
+    function checkNotification() {
+        const docRef = firestore.collection("users").doc(props.userName);
+        docRef.get().then((doc) => {
+            if (doc.exists) {
+                setNotification(doc.data().notified);
+            } else {
+                console.log("Email doesn't exist for check notification")
+            }
+        });
+    }
+
     useEffect(() => {
+        // readUser();
         readStats();
+        checkNotification();
     }, []);
 
     function readStats(){
@@ -108,8 +133,8 @@ const NavBar = (props) => {
                 {active === "VaccineRollout" && <VaccineRollout dob={dob} />}
                 {active === "CovidStats" && <StatisticDisplay statData={statData} />}
                 {active === "Messages" && <Messages messageArray={messages} />}
-                {active === "Account" && <AccountEdit dose1={dose1} dose2={dose2} />}
-                {active === "Notification" && <Notification email={props.userName} check={props.check} />}
+                {active === "Account" && <AccountEdit dose1={dose1} dose2={dose2} email={props.userName} />}
+                {active === "Notification" && <Notification email={props.userName} check={notification} />}d
             </div>
         </div>
     );

@@ -5,28 +5,23 @@ import fire from '../../fire';
 
 var firestore = fire.firestore();
 
-const Register = () => {
+const Register = (props) => {
+  const { setEmail, email, setFname, fname, setLname, lname } = props;
   const [state, setState] = useState("register");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
   const [mobile, setMobile] = useState("");
   const [dob, setDob] = useState("");
   const [address, setAddress] = useState("");
-  const [newAccount, setNewAccount] = useState("");
 
   const handleSignup = () => {
 
     // Check to see if an empty field was detected
-    if (email == "" || password == "" || firstname == "" || lastname == "" || mobile == "" || dob == "" || address == "") {
+    if (email == "" || password == "" || fname == "" || lname == "" || mobile == "" || dob == "" || address == "") {
       alert("Empty field detected")
       return;
     } 
-
-    setNewAccount(true);
 
     // Create user login 
     fire.auth().createUserWithEmailAndPassword(email, password)
@@ -55,8 +50,8 @@ const Register = () => {
     const docRef = firestore.collection("users").doc(email);
     docRef.set({
       email: email,
-      firstname: firstname,
-      lastname: lastname,
+      firstname: fname,
+      lastname: lname,
       mobile: mobile,
       dob: dob,
       address: address,
@@ -79,7 +74,7 @@ const Register = () => {
             <h2 className="register-box-header">SIGN UP</h2>
             <div className="form">
               <div className="form-group">
-                <input type="text" id = "email" placeholder = "Email" onChange={(e) => setEmail(e.target.value)} />
+                <input type="text" id = "email" placeholder = "Email" onChange={(e) => setEmail(e.target.value.toLowerCase())} />
                 <p>{emailError}</p>
               </div>
               <div className="form-group">
@@ -87,10 +82,10 @@ const Register = () => {
                 <p>{passwordError}</p>
               </div>
               <div className="form-group">
-                <input type="text" id = "firstname" placeholder = "First Name" onChange={(e) => setFirstname(e.target.value)} />
+                <input type="text" id = "firstname" placeholder = "First Name" onChange={(e) => setFname(e.target.value)} />
               </div>
               <div className="form-group">
-                <input type="text" id = "lastname" placeholder = "Last Name" onChange={(e) => setLastname(e.target.value)} />
+                <input type="text" id = "lastname" placeholder = "Last Name" onChange={(e) => setLname(e.target.value)} />
               </div>
               <div className="form-group">
                 <input type="text" id = "mobile" placeholder = "Mobile Number" onChange={(e) => setMobile(e.target.value)} />
@@ -118,7 +113,7 @@ const Register = () => {
 
         </div>)}
         <div > 
-          {state === "Login" && <Login newAccount={newAccount}/>}
+          {state === "Login" && <Login />}
         </div>
 
     </div> 
